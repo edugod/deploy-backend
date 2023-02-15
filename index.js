@@ -16,7 +16,7 @@ let notes = [
   },
   {
     id: 2,
-    content: "Browser can execute only JavaScript",
+    content: "ÚLTIMA CONFIRMAÇÃO ANTES DE DORMIR",
     important: false
   },
   {
