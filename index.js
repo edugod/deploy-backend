@@ -6,10 +6,12 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
+app.use(express.static('build'))
+
 let notes = [
   {
     id: 1,
-    content: "HTML is easy",
+    content: "Para eu ter certeza de que isso foi no backend",
     important: true
   },
   {
