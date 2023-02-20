@@ -6,37 +6,20 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-app.use(express.static('build'))
-
-
-const mongoose = require('mongoose')
-const password = 292044;
-const url = `mongodb+srv://edugod:${password}@notes-backend.sszkjpe.mongodb.net/Notes?retryWrites=true&w=majority`;
-
-mongoose.set('strictQuery',false)
-mongoose.connect(url)
-
-const noteSchema = new mongoose.Schema({
-  content: String,
-  important: Boolean,
-})  //isso é para não add a propriedade __v
-
-const Note = mongoose.model('Note', noteSchema)
-
 let notes = [
   {
     id: 1,
-    content: "Para eu ter certeza de que isso foi no backend",
+    content: "HTML is easy",
     important: true
   },
   {
     id: 2,
-    content: "ÚLTIMA CONFIRMAÇÃO ANTES DE DORMIR",
+    content: "Browser can execute only JavaScript",
     important: false
   },
   {
     id: 3,
-    content: "tendo certeza novamente",
+    content: "GET and POST are the most important methods of HTTP protocol",
     important: true
   }
 ]
@@ -53,16 +36,13 @@ app.get('/', (request, response) => {
 })
 
 app.get('/api/notes', (request, response) => {
-    Note.find({}).then(notes => {
-      response.json(notes)
-    })
-  })
-  
+    response.json(notes)
+})
 
 app.get('/api/notes/:id', (request, response) => {
     const id = Number(request.params.id)
     const note = notes.find(note => note.id === id)
-    
+
     if (note) {
         response.json(note)
     } else {
