@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const uri = 'mongodb+srv://edugod:<password>@notes-backend.sszkjpe.mongodb.net/notes?retryWrites=true&w=majority';
+const uri = 'mongodb+srv://edugod:292044@notes-backend.sszkjpe.mongodb.net/notes?retryWrites=true&w=majority';
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const noteSchema = new mongoose.Schema({
