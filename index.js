@@ -10,7 +10,7 @@ app.use(express.static('build'))
 
 
 const mongoose = require('mongoose')
-const password = process.argv[2];
+const password = 292044;
 const url = `mongodb+srv://edugod:${password}@notes-backend.sszkjpe.mongodb.net/Notes?retryWrites=true&w=majority`;
 
 mongoose.set('strictQuery',false)
@@ -102,5 +102,3 @@ const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
     console.log(`Server está rodando na porta ${PORT}`)
 })
-
-console.log('oq estou fazendo?')
