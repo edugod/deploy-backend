@@ -1,5 +1,5 @@
 ```mermaid
- sequenceDiagram
+sequenceDiagram
     participant Express as Express
     participant Mongoose as Mongoose
     participant MongoDB as MongoDB
