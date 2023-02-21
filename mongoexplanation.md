@@ -29,5 +29,4 @@ sequenceDiagram
     Mongoose-->>Note: Retorna sucesso
     Note-->>app: Retorna sucesso
     app->>Browser: Responde a requisição DELETE /api/notes/:id com sucesso
-
 ```
