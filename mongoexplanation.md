@@ -1,4 +1,4 @@
-````
+```mermaid
 sequenceDiagram
     participant Express as Express
     participant Mongoose as Mongoose
@@ -29,5 +29,5 @@ sequenceDiagram
     Mongoose-->>Note: Retorna sucesso
     Note-->>app: Retorna sucesso
     app->>Browser: Responde a requisição DELETE /api/notes/:id com sucesso
-    
-````
+
+```
