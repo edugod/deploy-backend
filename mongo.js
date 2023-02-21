@@ -18,12 +18,11 @@ mongoose.connect(url)
 const noteSchema = new mongoose.Schema({
     content: String,
     important: Boolean,
-  }, {versionKey: false})
+  })
   
   noteSchema.set('toJSON', {
     transform: (document, returnedObject) => {
       returnedObject.id = returnedObject._id.toString()
-      console.log(returnedObject)
       delete returnedObject._id
       delete returnedObject.__v
     }
@@ -99,12 +98,14 @@ app.post('/api/notes', (request, response) => {
         })
     }
 
+
     const note = {
         content: body.content,
         important: body.important || false,
         date: new Date(),
         id: generateId(),
     }
+
     notes = notes.concat(note)
 
     response.json(note)
