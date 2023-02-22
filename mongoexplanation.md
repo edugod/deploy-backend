@@ -1,11 +1,11 @@
 ```mermaid
 sequenceDiagram
-    participant Express
-    participant Mongoose
-    participant MongoDB
-    participant Note
-    participant app
-    participant Browser
+    participant Express as Express
+    participant Mongoose as Mongoose
+    participant MongoDB as MongoDB
+    participant Note as Note
+    participant app as app
+    participant Browser as Browser
 
     Express->>app: Usa express
     Browser->>app: Faz requisição GET /api/notes
@@ -29,5 +29,4 @@ sequenceDiagram
     Mongoose-->>Note: Retorna sucesso
     Note-->>app: Retorna sucesso
     app->>Browser: Responde a requisição DELETE /api/notes/:id com sucesso
-
 ```
