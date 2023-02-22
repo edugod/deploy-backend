@@ -1,11 +1,11 @@
 ```mermaid
 sequenceDiagram
-    participant Express as Express
-    participant Mongoose as Mongoose
-    participant MongoDB as MongoDB
-    participant note as note
-    participant app as app
-    participant Browser as Browser
+    participant Express
+    participant Mongoose
+    participant MongoDB
+    participant note
+    participant app
+    participant Browser
 
     Express->>app: Usa express
     Browser->>app: Faz requisição GET /api/notes
