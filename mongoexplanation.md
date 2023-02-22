@@ -3,7 +3,7 @@ sequenceDiagram
     participant Express
     participant Mongoose
     participant MongoDB
-    participant note
+    participant Note
     participant app
     participant Browser
 
@@ -13,21 +13,21 @@ sequenceDiagram
     Mongoose->>MongoDB: Conecta com o MongoDB
     MongoDB-->>Mongoose: Responde com sucesso
     Mongoose-->>app: Responde com sucesso
-    app-->>note: Faz consulta na coleção de notas
-    note->>Mongoose: Retorna a coleção de notas
+    app->>Note: Faz consulta na coleção de notas
+    Note->>Mongoose: Retorna a coleção de notas
     Mongoose-->>app: Retorna a coleção de notas
     app->>Browser: Responde com a requisição GET /api/notes com a coleção de notas
     Browser->>app: Faz requisição POST /api/notes com os dados de uma nova nota
-    app->>note: Cria uma nova nota
-    note->>Mongoose: Salva a nova nota no banco de dados
-    Mongoose-->>note: Retorna sucesso
-    note-->>app: Retorna sucesso
+    app->>Note: Cria uma nova nota
+    Note->>Mongoose: Salva a nova nota no banco de dados
+    Mongoose-->>Note: Retorna sucesso
+    Note-->>app: Retorna sucesso
     app->>Browser: Responde a requisição POST /api/notes com a nova nota
     Browser->>app: Faz requisição DELETE /api/notes/:id para deletar uma nota específica
-    app->>note: Remove a nota especificada
-    note->>Mongoose: Remove a nota do banco de dados
-    Mongoose-->>note: Retorna sucesso
-    note-->>app: Retorna sucesso
+    app->>Note: Remove a nota especificada
+    Note->>Mongoose: Remove a nota do banco de dados
+    Mongoose-->>Note: Retorna sucesso
+    Note-->>app: Retorna sucesso
     app->>Browser: Responde a requisição DELETE /api/notes/:id com sucesso
 
 ```
