@@ -13,7 +13,7 @@ sequenceDiagram
     Mongoose->>MongoDB: Conecta com o MongoDB
     MongoDB-->>Mongoose: Responde com sucesso
     Mongoose-->>app: Responde com sucesso
-    app->>note: Faz consulta na coleção de notas
+    app-->>note: Faz consulta na coleção de notas
     note->>Mongoose: Retorna a coleção de notas
     Mongoose-->>app: Retorna a coleção de notas
     app->>Browser: Responde com a requisição GET /api/notes com a coleção de notas
