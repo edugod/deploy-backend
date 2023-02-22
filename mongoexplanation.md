@@ -1,32 +1,40 @@
 ```mermaid
-sequenceDiagram
-    participant Express as Express
-    participant Mongoose as Mongoose
-    participant MongoDB as MongoDB
-    participant Note as Note
-    participant app as app
-    participant Browser as Browser
+graph LR
+    subgraph Cliente
+        B((Browser)) --> A(Faz requisição GET /api/notes)
+        B --> C(Faz requisição POST /api/notes)
+        B --> D(Faz requisição DELETE /api/notes/:id)
+    end
 
-    Express->>app: Usa express
-    Browser->>app: Faz requisição GET /api/notes
-    app->>Mongoose: Conecta com o MongoDB
-    Mongoose->>MongoDB: Conecta com o MongoDB
-    MongoDB-->>Mongoose: Responde com sucesso
-    Mongoose-->>app: Responde com sucesso
-    app->>Note: Faz consulta na coleção de notas
-    Note->>Mongoose: Retorna a coleção de notas
-    Mongoose-->>app: Retorna a coleção de notas
-    app->>Browser: Responde com a requisição GET /api/notes com a coleção de notas
-    Browser->>app: Faz requisição POST /api/notes com os dados de uma nova nota
-    app->>Note: Cria uma nova nota
-    Note->>Mongoose: Salva a nova nota no banco de dados
-    Mongoose-->>Note: Retorna sucesso
-    Note-->>app: Retorna sucesso
-    app->>Browser: Responde a requisição POST /api/notes com a nova nota
-    Browser->>app: Faz requisição DELETE /api/notes/:id para deletar uma nota específica
-    app->>Note: Remove a nota especificada
-    Note->>Mongoose: Remove a nota do banco de dados
-    Mongoose-->>Note: Retorna sucesso
-    Note-->>app: Retorna sucesso
-    app->>Browser: Responde a requisição DELETE /api/notes/:id com sucesso
+    subgraph Servidor
+        F((app)) --> G(Faz consulta na coleção de notas)
+        G --> H(Retorna a coleção de notas)
+        F --> I(Cria uma nova nota)
+        I --> J(Salva a nova nota no banco de dados)
+        I --> K(Retorna sucesso)
+        F --> L(Remove a nota especificada)
+        L --> M(Remove a nota do banco de dados)
+        L --> N(Retorna sucesso)
+    end
+
+    subgraph Banco de Dados
+        O((MongoDB)) --> P(Conecta com o MongoDB)
+        P --> Q(Responde com sucesso)
+        R((Mongoose)) --> P
+        R --> S(Conecta com o MongoDB)
+        S --> T(Responde com sucesso)
+        G --> U(Retorna a coleção de notas)
+    end
+
+    A --> F
+    C --> I
+    D --> L
+    F --> R
+    R --> O
+    R --> S
+    G --> U
+    H --> B
+    K --> C
+    M --> D
+    N --> D
 ```
