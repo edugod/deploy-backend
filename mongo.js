@@ -20,13 +20,14 @@ const noteSchema = new mongoose.Schema({
     important: Boolean,
   })
   
-  schema.set('toJSON', {
+  noteSchema.set('toJSON', {
     transform: function (doc, ret, options) {
-        ret.id = ret._id;
-        delete ret._id;
-        delete ret.__v;
-    }
-}); 
+      ret.id = ret._id.toString();
+      delete ret._id;
+      delete ret.__v;
+    },
+  });
+  
   
   const Note = mongoose.model('Note', noteSchema)
 
